@@ -162,6 +162,8 @@ class UELCPageView(LoggedInMixin,
         '''if the notification is a quiz/decision submission
         we need to get and return the curveball block'''
         msg = dict()
+        print "notification"
+        print notification
         if(notification == 'At Gate Block'):
             cb = self.section.get_next()
             print cb
