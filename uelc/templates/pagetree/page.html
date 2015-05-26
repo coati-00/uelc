@@ -93,6 +93,7 @@
         {% if quiz.id == block.id %}
           {% if quiz.completed != True%}
             {% if request.user.profile.is_group_user %}
+              <p class="unlock-msg" style="display:none;">You may proceed to the next section</p>
               <form class="decision-block" id="pageblock-{{block.id}}-quiz" action="." method="post">{% csrf_token %}
             {% endif %}
           {% endif %}

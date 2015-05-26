@@ -163,24 +163,26 @@ class UELCPageView(LoggedInMixin,
         we need to get and return the curveball block'''
         msg = dict()
         if(notification == 'Decision Submitted'):
-            curvball = self.section.get_next()
-            print curveball
-            print curveball.curveball_one.title
-            msg = dict(userId=user.id,
-                   path=path,
-                   sectionPk=self.section.pk,
-                   notification=notification,
-                   curvball_one_title=curveball.curveball_one.title,
-                   curvball_one_explanation=curveball.curveball_one.explanation,
-                   curvball_two_title=curveball.curveball_two.title,
-                   curvball_two_explanation=curveball.curveball_two.explanation,
-                   curvball_three_title=curveball.curveball_three.title,
-                   curvball_three_explanation=curveball.curveball_three.explanation)
+            cb = self.section.get_next()
+            print cb
+            print cb.curveball_one.title
+            msg = dict(
+                userId=user.id,
+                path=path,
+                sectionPk=self.section.pk,
+                notification=notification,
+                curvball_one_title=cb.curveball_one.title,
+                curvball_one_explanation=cb.curveball_one.explanation,
+                curvball_two_title=cb.curveball_two.title,
+                curvball_two_explanation=cb.curveball_two.explanation,
+                curvball_three_title=cb.curveball_three.title,
+                curvball_three_explanation=cb.curveball_three.explanation)
         elif(notification != 'Decision Submitted'):
-            msg = dict(userId=user.id,
-                   path=path,
-                   sectionPk=self.section.pk,
-                   notification=notification)
+            msg = dict(
+                userId=user.id,
+                path=path,
+                sectionPk=self.section.pk,
+                notification=notification)
         e = dict(address="%s.pages/%s/facilitator/" %
                  (settings.ZMQ_APPNAME, self.section.hierarchy.name),
                  content=json.dumps(msg))
