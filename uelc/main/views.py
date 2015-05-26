@@ -162,7 +162,7 @@ class UELCPageView(LoggedInMixin,
         '''if the notification is a quiz/decision submission
         we need to get and return the curveball block'''
         msg = dict()
-        if(notification == 'Decision Submitted'):
+        if(notification == 'At Gate Block'):
             cb = self.section.get_next()
             print cb
             print cb.curveball_one.title
@@ -177,7 +177,7 @@ class UELCPageView(LoggedInMixin,
                 curvball_two_explanation=cb.curveball_two.explanation,
                 curvball_three_title=cb.curveball_three.title,
                 curvball_three_explanation=cb.curveball_three.explanation)
-        elif(notification != 'Decision Submitted'):
+        elif(notification == 'Decision Submitted'):
             msg = dict(
                 userId=user.id,
                 path=path,
