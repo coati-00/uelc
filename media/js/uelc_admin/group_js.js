@@ -49,6 +49,7 @@ $(function() {
             jQuery('ul.pager li.next a').removeClass('disabled');
             jQuery('ul.pager li.next a').css('color', '#337ab7');
             jQuery('ul.pager li.next a').attr('href', data.nextUrl);
+            jQuery('.unlock-msg').show();
             jQuery('.unlock-msg').addClass('alert alert-success');
         }
 
