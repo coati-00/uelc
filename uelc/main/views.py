@@ -159,7 +159,25 @@ class UELCPageView(LoggedInMixin,
         user = get_object_or_404(User, pk=request.user.pk)
         socket = zmq_context.socket(zmq.REQ)
         socket.connect(settings.WINDSOCK_BROKER_URL)
-        msg = dict(userId=user.id,
+        '''if the notification is a quiz/decision submission
+        we need to get and return the curveball block'''
+        msg = dict()
+        if(notification == 'Decision Submitted'):
+            curvball = self.section.get_next()
+            print curveball
+            print curveball.curveball_one.title
+            msg = dict(userId=user.id,
+                   path=path,
+                   sectionPk=self.section.pk,
+                   notification=notification,
+                   curvball_one_title=curveball.curveball_one.title,
+                   curvball_one_explanation=curveball.curveball_one.explanation,
+                   curvball_two_title=curveball.curveball_two.title,
+                   curvball_two_explanation=curveball.curveball_two.explanation,
+                   curvball_three_title=curveball.curveball_three.title,
+                   curvball_three_explanation=curveball.curveball_three.explanation)
+        elif(notification != 'Decision Submitted'):
+            msg = dict(userId=user.id,
                    path=path,
                    sectionPk=self.section.pk,
                    notification=notification)
