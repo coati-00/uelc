@@ -164,22 +164,31 @@ class UELCPageView(LoggedInMixin,
         msg = dict()
         print "notification"
         print notification
-        if(notification == 'At Gate Block'):
+        if(notification == 'Decision Submitted'):
             cb = self.section.get_next()
             print cb
-            print cb.curveball_one.title
+            try:
+                curvball_one_title = cb.curveball_one.title
+                print cb.curveball_one.title
+                msg = dict(
+                    userId=user.id,
+                    path=path,
+                    sectionPk=self.section.pk,
+                    notification=notification,
+                    curvball_one_title=cb.curveball_one.title,
+                    curvball_one_explanation=cb.curveball_one.explanation,
+                    curvball_two_title=cb.curveball_two.title,
+                    curvball_two_explanation=cb.curveball_two.explanation,
+                    curvball_three_title=cb.curveball_three.title,
+                    curvball_three_explanation=cb.curveball_three.explanation)
+            except:
+                pass
             msg = dict(
                 userId=user.id,
                 path=path,
                 sectionPk=self.section.pk,
-                notification=notification,
-                curvball_one_title=cb.curveball_one.title,
-                curvball_one_explanation=cb.curveball_one.explanation,
-                curvball_two_title=cb.curveball_two.title,
-                curvball_two_explanation=cb.curveball_two.explanation,
-                curvball_three_title=cb.curveball_three.title,
-                curvball_three_explanation=cb.curveball_three.explanation)
-        elif(notification == 'Decision Submitted'):
+                notification=notification)
+        elif(notification == 'At Gate Block'):
             msg = dict(
                 userId=user.id,
                 path=path,
