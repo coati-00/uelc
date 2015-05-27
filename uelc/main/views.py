@@ -166,23 +166,25 @@ class UELCPageView(LoggedInMixin,
         print notification
         if(notification == 'Decision Submitted'):
             cb = self.section.get_next()
-            print cb
-            try:
-                curvball_one_title = cb.curveball_one.title
-                print cb.curveball_one.title
-                msg = dict(
-                    userId=user.id,
-                    path=path,
-                    sectionPk=self.section.pk,
-                    notification=notification,
-                    curvball_one_title=cb.curveball_one.title,
-                    curvball_one_explanation=cb.curveball_one.explanation,
-                    curvball_two_title=cb.curveball_two.title,
-                    curvball_two_explanation=cb.curveball_two.explanation,
-                    curvball_three_title=cb.curveball_three.title,
-                    curvball_three_explanation=cb.curveball_three.explanation)
-            except:
-                pass
+            if (cb.display_name == "Curveball Block"):
+                """We must ask the facilitator
+                to select a curveball for the group"""
+                try:
+                    curvball_one_title = cb.curveball_one.title
+                    print cb.curveball_one.title
+                    msg = dict(
+                        userId=user.id,
+                        path=path,
+                        sectionPk=self.section.pk,
+                        notification=notification,
+                        curvball_one_title=cb.curveball_one.title,
+                        curvball_one_explanation=cb.curveball_one.explanation,
+                        curvball_two_title=cb.curveball_two.title,
+                        curvball_two_explanation=cb.curveball_two.explanation,
+                        curvball_three_title=cb.curveball_three.title,
+                        curvball_three_explanation=cb.curveball_three.explanation)
+                except:
+                    pass
             msg = dict(
                 userId=user.id,
                 path=path,
@@ -408,6 +410,19 @@ class FacilitatorView(LoggedInFacilitatorMixin,
         socket.send(json.dumps(e))
         socket.recv()
 
+    def post_curveball_select(self, request):
+        '''Show the facilitator their choices for the curveball,
+        facilitator selects what curveball the group will see'''
+        print "post curveball"
+        user = User.objects.get(id=request.POST.get('user_id'))
+        action = request.POST.get('curveball-select')
+        section = Section.objects.get(id=request.POST.get('section'))
+        '''Now we decide which curveball is visible when the gate unlocks'''
+        if action == 'submit':
+            self.set_upv(user, section, "complete")
+            self.notify_group_user(section, user, "Open Gate")
+            admin_ajax_page_submit(section, user)
+
     def post_gate_action(self, request):
         user = User.objects.get(id=request.POST.get('user_id'))
         action = request.POST.get('gate-action')
@@ -429,6 +444,8 @@ class FacilitatorView(LoggedInFacilitatorMixin,
             self.post_library_item_edit(request)
         if request.POST.get('gate-action'):
             self.post_gate_action(request)
+        if request.POST.get('curveball-select'):
+            self.post_curveball_select(request)
         return HttpResponseRedirect(request.path)
 
     def dispatch(self, request, *args, **kwargs):
