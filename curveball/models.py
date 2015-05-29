@@ -154,7 +154,11 @@ class CurveballBlock(models.Model):
 
 class CurveballSubmission(models.Model):
     curveballblock = models.ForeignKey(CurveballBlock)
-    curveball_user = models.ForeignKey(User, related_name='curveball_user')
+    '''associate the group with the curveball so we know
+    what content to show'''
+    group_curveball = models.ForeignKey(User, related_name='curveball_user')
+    '''group user has been shown curveball and has read it'''
+    group_confirmation = models.BooleanField(default=False)
     curveball = models.ForeignKey(Curveball, null=True, blank=True)
     section = models.ForeignKey(Section)
     submitted = models.DateTimeField(default=datetime.now)
