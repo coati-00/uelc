@@ -1,5 +1,6 @@
 {% load markup %}
-
+{% comment %}Display all potential options to the administrator or facilitator{% endcomment %}
+{% if not request.user.profile_type == "group_usr" %}
   {% if block.curveball_one %}
     {% if block.curveball_one.title %}
       <b>{{block.curveball_one.title|markdown}}</b>
@@ -22,3 +23,13 @@
       <p>{{block.curveball_three.explanation|markdown}}</p>
     {% endif %}
   {% endif %}
+{% endif %}
+
+{% if request.user.profile_type == "group_usr" %}
+  {% if block.curveballsubmission_set.count %}
+    {% for cb in block.curveballsubmission_set.all %}
+      {% if cb.curveball_user == request.user %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}

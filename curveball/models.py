@@ -155,10 +155,11 @@ class CurveballBlock(models.Model):
 class CurveballSubmission(models.Model):
     curveballblock = models.ForeignKey(CurveballBlock)
     curveball_user = models.ForeignKey(User, related_name='curveball_user')
+    curveball = models.ForeignKey(Curveball, null=True, blank=True)
     section = models.ForeignKey(Section)
     submitted = models.DateTimeField(default=datetime.now)
 
     def __unicode__(self):
-        return "curveball %d submission by %s at %s" % (
+        return "curveball %d submission by %s at %s for choice %s" % (
             self.curveballblock.id, unicode(self.curveball_user),
-            self.submitted)
+            self.submitted, unicode(self.curveball))
