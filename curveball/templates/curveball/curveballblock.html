@@ -29,6 +29,8 @@
   {% if block.curveballsubmission_set.count %}
     {% for cb in block.curveballsubmission_set.all %}
       {% if cb.curveball_user == request.user %}
+        <p>{{cb.curveball.title}}</p>
+        <p>{{cb.curveball.explanation}}</p>
       {% endif %}
     {% endfor %}
   {% endif %}
