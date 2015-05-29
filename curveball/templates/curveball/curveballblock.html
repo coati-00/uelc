@@ -4,7 +4,7 @@
   Display all potential options to the administrator or facilitator
 {% endcomment %}
 
-{% if request.user.profile_type != "group_user" %}
+{% if not request.user.profile.is_group_user %}
   {% if block.curveball_one %}
     {% if block.curveball_one.title %}
       <b>{{block.curveball_one.title|markdown}}</b>
@@ -31,7 +31,7 @@
   {% endif %}
 {% endif %}
 
-{% if request.user.profile_type == "group_user" %}
+{% if request.user.profile.is_group_user %}
   {% if block.curveballsubmission_set.count %}
     {% for cb in block.curveballsubmission_set.all %}
       {% if cb.group_curveball == request.user %}
