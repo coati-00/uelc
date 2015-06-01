@@ -24,7 +24,6 @@
       <!-- New facilitator comment: grab sections -->
     {% endcomment %}
 
-    {% for u in user_sections %}
       {% if u.0.profile.profile_type == "group_user" %}
       <div class="col-xs-3 text-center">
       <!-- user (u.0), gateblocks (u.1) --> 
@@ -42,9 +41,8 @@
               -->
               {% endcomment %}
 
-              {% if sec.2 %}<!--If gate is unlocked  -->
-                {% comment %}
-                  <!--We are displaying content seperately from gateblocks  -->{% endcomment %}
+            {% if sec.2 %}<!--If gate is unlocked  -->
+              {% comment %}<!--We are displaying content seperately from gateblocks  -->{% endcomment %}
                 {% if sec.5 %}
                   <div class="gate-button unlocked {{sec.6.0|convert}}" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}">
                     <div class="btn-group-vertical" role="group" aria-label="..."  style="width: 100%;">                        
@@ -96,7 +94,6 @@
     
     
     {% comment %}Old facilitator template{% endcomment %}
-    {% comment %}
     {% for u in user_sections %}
       {% if u.0.profile.profile_type == "group_user" %}
       <div class="col-xs-3 text-center">
@@ -106,7 +103,6 @@
         <div class="gate-section-list">
         {% for sec in u.1 %}
           <div class="group-btn-list" data-section-id="{{sec.0.pk}}" data-group-id="{{u.0.id}}">
-     {% endcomment %}
             {% comment %}
             <!-- 
                 section (sec.0), gateblock (sec.1), unlocked (sec.2), 
@@ -114,7 +110,7 @@
                 (sec.6) section part 
             -->
             {% endcomment %}
-{% comment %}
+
             {% if sec.2 %}
               {% comment %}<!--We are displaying content seperately from gateblocks  -->{% endcomment %}
                 {% if sec.5 %}
@@ -165,9 +161,6 @@
    {% endif %}
     {% endfor %}
 <br style="clear:both;"/>
-{% endcomment %}
-
-
 {% comment %}
         <hr />
         <br style="clear:both;"/>
