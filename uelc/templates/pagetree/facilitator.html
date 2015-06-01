@@ -40,7 +40,9 @@
 
             {% if sec.2 %}
               {% comment %}
-                <!-- We are displaying content seperately from gateblocks -->
+                <!-- We are currently using gateblock labels to represent the pageblock before it -->
+                <!-- We need to somehow get the actual content for the curveball
+                to dynamically generate the forms for the facilitator -->
               {% endcomment %}
                 {% if sec.5 %}
                   <div class="gate-button unlocked {{sec.6.0|convert}}" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}">

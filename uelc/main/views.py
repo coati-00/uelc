@@ -166,6 +166,7 @@ class UELCPageView(LoggedInMixin,
             cb = self.section.get_next()
             try:
                 if (cb.display_name == "Curveball Block"):
+                    print "at curveball"
                     """We must ask the facilitator
                     to select a curveball for the group"""
                     msg = dict(
