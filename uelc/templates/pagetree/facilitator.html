@@ -23,6 +23,7 @@
     {% comment %}
       <!-- New facilitator comment: grab sections -->
     {% endcomment %}
+
     {% for u in user_sections %}
       {% if u.0.profile.profile_type == "group_user" %}
       <div class="col-xs-3 text-center">
@@ -95,6 +96,7 @@
     
     
     {% comment %}Old facilitator template{% endcomment %}
+    {% comment %}
     {% for u in user_sections %}
       {% if u.0.profile.profile_type == "group_user" %}
       <div class="col-xs-3 text-center">
@@ -162,6 +164,9 @@
    {% endif %}
     {% endfor %}
 <br style="clear:both;"/>
+{% endcomment %}
+
+
 {% comment %}
         <hr />
         <br style="clear:both;"/>
