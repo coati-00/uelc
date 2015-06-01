@@ -106,6 +106,7 @@
         <div class="gate-section-list">
         {% for sec in u.1 %}
           <div class="group-btn-list" data-section-id="{{sec.0.pk}}" data-group-id="{{u.0.id}}">
+     {% endcomment %}
             {% comment %}
             <!-- 
                 section (sec.0), gateblock (sec.1), unlocked (sec.2), 
@@ -113,7 +114,7 @@
                 (sec.6) section part 
             -->
             {% endcomment %}
-
+{% comment %}
             {% if sec.2 %}
               {% comment %}<!--We are displaying content seperately from gateblocks  -->{% endcomment %}
                 {% if sec.5 %}
