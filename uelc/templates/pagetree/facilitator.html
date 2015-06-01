@@ -20,27 +20,31 @@
 <div id="content" class="container-fluid">
     <h1>Case Control for {{case.name}}</h1>
     <p>Use the control panel to check group progress as well as lock, unlock, and preview content.</p>
-    {% comment %}<!-- New facilitator comment: grab sections -->{% endcomment %}
+    {% comment %}
+      <!-- New facilitator comment: grab sections -->
+    {% endcomment %}
 
       {% if u.0.profile.profile_type == "group_user" %}
       <div class="col-xs-3 text-center">
       <!-- user (u.0), gateblocks (u.1) --> 
-      <div class="gate-section">
-        <h3 class="facilitator-usrnm">Group {{u.0}} Sections and Gates<br /><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></h3>
-        <div class="gate-section-list">
-        {% for sec in u.1 %}
+        <div class="gate-section">
+          <h3 class="facilitator-usrnm">Group {{u.0}} Sections and Gates<br /><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></h3>
+          <div class="gate-section-list">
+          {% for sec in u.1 %}
 
-          <div class="group-btn-list" data-section-id="{{sec.0.pk}}" data-group-id="{{u.0.id}}">
-            {% comment %}
-            <!-- 
-                section (sec.0), gateblock (sec.1), unlocked (sec.2), 
-                user (sec.3), status (sec.4), can_show_gateblock (sec.5),
-                (sec.6) section part 
-            -->
-            {% endcomment %}
+            <div class="group-btn-list" data-section-id="{{sec.0.pk}}" data-group-id="{{u.0.id}}">
+              {% comment %}
+              <!-- 
+                  section (sec.0), gateblock (sec.1), unlocked (sec.2), 
+                  user (sec.3), status (sec.4), can_show_gateblock (sec.5),
+                  (sec.6) section part 
+              -->
+              {% endcomment %}
 
-            {% if sec.2 %}<!--If gate is unlocked  -->
-              {% comment %}<!--We are displaying content seperately from gateblocks  -->{% endcomment %}
+              {% if sec.2 %}<!--If gate is unlocked  -->
+                {% comment %}
+                  <!--We are displaying content seperately from gateblocks  -->
+                {% endcomment %}
                 {% if sec.5 %}
                   <div class="gate-button unlocked {{sec.6.0|convert}}" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}">
                     <div class="btn-group-vertical" role="group" aria-label="..."  style="width: 100%;">                        
@@ -87,7 +91,7 @@
     </div><!--end gate-section-->
    </div>
    {% endif %}
-    {% endfor %}
+
 <br style="clear:both;"/>
     
     
