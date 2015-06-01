@@ -162,27 +162,23 @@ class UELCPageView(LoggedInMixin,
         '''if the notification is a quiz/decision submission
         we need to get and return the curveball block'''
         msg = dict()
-        print "notification"
-        print notification
         if(notification == 'Decision Submitted'):
             cb = self.section.get_next()
             if (cb.display_name == "Curveball Block"):
                 """We must ask the facilitator
                 to select a curveball for the group"""
                 try:
-                    curvball_one_title = cb.curveball_one.title
-                    print cb.curveball_one.title
                     msg = dict(
                         userId=user.id,
                         path=path,
                         sectionPk=self.section.pk,
                         notification=notification,
-                        curvball_one_title=cb.curveball_one.title,
-                        curvball_one_explanation=cb.curveball_one.explanation,
-                        curvball_two_title=cb.curveball_two.title,
-                        curvball_two_explanation=cb.curveball_two.explanation,
-                        curvball_three_title=cb.curveball_three.title,
-                        curvball_three_explanation=cb.curveball_three.explanation)
+                        cb_title=cb.curveball_one.title,
+                        cb_one_explanation=cb.curveball_one.explanation,
+                        cb_two_title=cb.curveball_two.title,
+                        cb_two_explanation=cb.curveball_two.explanation,
+                        cb_three_title=cb.curveball_three.title,
+                        cb_three_explanation=cb.curveball_three.explanation)
                 except:
                     pass
             msg = dict(
@@ -413,7 +409,6 @@ class FacilitatorView(LoggedInFacilitatorMixin,
     def post_curveball_select(self, request):
         '''Show the facilitator their choices for the curveball,
         facilitator selects what curveball the group will see'''
-        print "post curveball"
         user = User.objects.get(id=request.POST.get('user_id'))
         action = request.POST.get('curveball-select')
         section = Section.objects.get(id=request.POST.get('section'))
@@ -500,6 +495,7 @@ class FacilitatorView(LoggedInFacilitatorMixin,
         quizzes = [p.block() for p in section.pageblock_set.all()
                    if hasattr(p.block(), 'needs_submit')
                    and p.block().needs_submit()]
+        # curveballs = p.block()
         context = dict(section=section,
                        quizzes=quizzes,
                        user_sections=user_sections,

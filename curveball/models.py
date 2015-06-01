@@ -43,7 +43,7 @@ class CurveballBlock(models.Model):
         return self.pageblocks.all()[0]
 
     def needs_submit(self):
-        return True
+        return False
 
     def allow_redo(self):
         return False
