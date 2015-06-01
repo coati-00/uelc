@@ -164,10 +164,10 @@ class UELCPageView(LoggedInMixin,
         msg = dict()
         if(notification == 'Decision Submitted'):
             cb = self.section.get_next()
-            if (cb.display_name == "Curveball Block"):
-                """We must ask the facilitator
-                to select a curveball for the group"""
-                try:
+            try:
+                if (cb.display_name == "Curveball Block"):
+                    """We must ask the facilitator
+                    to select a curveball for the group"""
                     msg = dict(
                         userId=user.id,
                         path=path,
@@ -179,8 +179,8 @@ class UELCPageView(LoggedInMixin,
                         cb_two_explanation=cb.curveball_two.explanation,
                         cb_three_title=cb.curveball_three.title,
                         cb_three_explanation=cb.curveball_three.explanation)
-                except:
-                    pass
+            except:
+                pass
             msg = dict(
                 userId=user.id,
                 path=path,
@@ -311,7 +311,7 @@ class UELCPageView(LoggedInMixin,
         # make sure that they have not submitted
         # a hidden input, key "case" and csrf token
         # is included on all case_quiz submissions thus,
-        # musthave more than two keys
+        # must have more than two keys
         if len(request.POST.keys()) > 2:
             if request.POST.get('action', '') == 'reset':
                 self.upv.visit(status="incomplete")
