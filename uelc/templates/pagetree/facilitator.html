@@ -53,19 +53,11 @@
                       <span> <p style="color:#006600">This is unlocked block</p></span>
                     </div>
                   </div>
-                  <div class="gate-button unlocked {{sec.6.0|convert}}" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}">
-                    <div class="btn-group-vertical" role="group" aria-label="..."  style="width: 100%;">                        
-                      <div type="submit" class="btn-sm btn-success text-center status-{{sec.4}}" style="margin-top: 5px;">
-                        <span><span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {{ sec.1.pageblock.label }} </span>
-                        <br />
-                        <span class="badge badge-{{sec.4}} text-capitalize">{{sec.4}}</span>
-                      </div>
-                   </div>
-                   <div class="clearfix visible-lg-block"></div>
-                  </div>
+                  <div><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
                 {% endif %}
             {% elif sec.1 %} <!-- If block is a gateblock and user can see it -->
               {% if sec.5 %}
+              <div>
                 <button type="button" class="btn btn-danger" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}" aria-expanded="false">
                   Locked Gate 
                   <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
@@ -78,6 +70,8 @@
                         <input type="hidden" class="post" value="{{sec.0.get_absolute_url}}"> 
                   </form>
                 </button>
+                </div>
+                <div><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
                 {% endif %}
             {% else %} <!-- Other blocks should be locked sections -->
               {% comment %}{% if sec.5 %}{% endcomment %}
