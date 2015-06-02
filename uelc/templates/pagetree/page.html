@@ -127,7 +127,7 @@
         <!-- The curveball block uses submission to allow the facilitator
         to choose a curveball for the group, so in this case we do not want
         an actual submission, we just want to alert the facilitator the the group
-        is done discussing the curveball -->
+        is done discussing the curveball -->{% csrf_token %}
             <button type="button" data-pageblock="{{block.id}}" data-group="{{request.user.pk}}" class="btn btn-primary curveball-btn" autocomplete="off">
                 Done Discussing Curveball
             </button>
