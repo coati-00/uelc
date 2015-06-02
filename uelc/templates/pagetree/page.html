@@ -128,7 +128,7 @@
         to choose a curveball for the group, so in this case we do not want
         an actual submission, we just want to alert the facilitator the the group
         is done discussing the curveball -->
-            <button type="button" data-pageblock-id="pageblock-{{block.id}}" data-group-id="group-{{request.user.pk}}" class="btn btn-primary curveball-btn" autocomplete="off">
+            <button type="button" data-pageblock="{{block.id}}" data-group="{{request.user.pk}}" class="btn btn-primary curveball-btn" autocomplete="off">
                 Done Discussing Curveball
             </button>
         {% endif %}

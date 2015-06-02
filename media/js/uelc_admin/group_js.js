@@ -8,9 +8,9 @@ $(function() {
 		alert("jQuery(this).data()");
 		//console.log(jQuery(this).data());
 		alert(jQuery(this).data());
-		alert("jQuery(this).data().pageblock-id");
+		alert("jQuery(this).data().pageblock");
 		//console.log(jQuery(this).data());
-		alert(jQuery(this).data().pageblock-id);
+		alert(jQuery(this).data().pageblock);
 		alert("jQuery(this).data().group");
 		//console.log(jQuery(this).data());
 		alert(jQuery(this).data().group);
