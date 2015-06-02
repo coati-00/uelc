@@ -353,12 +353,12 @@ class CurveballReadView(LoggedInMixin, JSONResponseMixin, View):
         seems like a significant amout of work just to say
         "hey to students read the content" '''
         # print request.POST
-        group = kwargs.pop('group', None)
-        block = kwargs.pop('pageblock', None)
+        group = request.POST.get('group', '')
+        block = request.POST.get('pageblock', '')
         path = request.path
         return self.render_to_json_response({'group': group,
-                                               'block': block,
-                                               'path': path})
+                                             'block': block,
+                                             'path': path})
 
 
 class UELCEditView(LoggedInFacilitatorMixin,
