@@ -123,6 +123,12 @@
           <h3>{{block.label}}</h3>
         {% endif %}
         {% render block %}
+        {% if request.user.profile.is_group_user %}
+            <form class="curveball-block" id="pageblock-{{block.id}}-curveball" action="." method="post">{% csrf_token %}
+            <input id="pageblock-{{block.id}}-submit" type="submit" value="Submit Curveball" class="btn btn-primary" />
+            </form>
+        {% endif %}
+        
       </div>
     {% elif block.block.display_name == "Text Block" %}
       {% is_block_on_user_path request section block casemap.value as user_path %}

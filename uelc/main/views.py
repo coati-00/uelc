@@ -317,6 +317,7 @@ class UELCPageView(LoggedInMixin,
         # a hidden input, key "case" and csrf token
         # is included on all case_quiz submissions thus,
         # must have more than two keys
+        print request.POST
         if len(request.POST.keys()) > 2:
             if request.POST.get('action', '') == 'reset':
                 self.upv.visit(status="incomplete")
