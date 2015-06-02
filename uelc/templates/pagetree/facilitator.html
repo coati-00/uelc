@@ -79,14 +79,14 @@
                 </button>
                 {% endif %}
             {% else %} <!-- Other blocks should be locked sections -->
-              {% if sec.5 %}
+              {% comment %}{% if sec.5 %}{% endcomment %}
                  <div class="panel panel-primary">
                     <div class="panel-heading"></div>
                     <div class="panel-body">
                       <span> {{ sec.1.pageblock.label }} </span> <span> This is locked block</span>
                     </div>
                   </div>
-              {% endif %}
+              {% comment %}{% endif %}{% endcomment %}
             {% endif %}
             </div>
         {% endfor %}
