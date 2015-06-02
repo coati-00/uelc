@@ -347,7 +347,7 @@ class CurveballReadView(LoggedInMixin, JSONResponseMixin, View):
                        
     def post(self, *args, **kwargs):
         print "CurveballReadView"
-        print s
+        print self
         '''Is there some way o pass this to the PageViews notify facilitator
         by making it as class method? setting up another websocket connection
         seems like a significant amout of work just to say
