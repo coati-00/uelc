@@ -325,6 +325,7 @@ class UELCPageView(LoggedInMixin,
         # is included on all case_quiz submissions thus,
         # must have more than two keys
         print request.POST
+        print path
         if len(request.POST.keys()) > 2:
             if request.POST.get('action', '') == 'reset':
                 self.upv.visit(status="incomplete")

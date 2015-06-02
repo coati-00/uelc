@@ -124,9 +124,13 @@
         {% endif %}
         {% render block %}
         {% if request.user.profile.is_group_user %}
-            <form class="curveball-block" id="pageblock-{{block.id}}-curveball" action="." method="post">{% csrf_token %}
-            <input id="pageblock-{{block.id}}-submit" type="submit" value="Submit Curveball" class="btn btn-primary" />
-            </form>
+        <!-- The curveball block uses submission to allow the facilitator
+        to choose a curveball for the group, so in this case we do not want
+        an actual submission, we just want to alert the facilitator the the group
+        is done discussing the curveball -->
+            <button type="button" data-pageblock-id="pageblock-{{block.id}}" data-group-id="group-{{request.user.pk}}" class="btn btn-primary curveball-btn" autocomplete="off">
+                Done Discussing Curveball
+            </button>
         {% endif %}
         
       </div>
