@@ -45,6 +45,13 @@
                 to dynamically generate the forms for the facilitator -->
               {% endcomment %}
                 {% if sec.5 %}
+                  <!-- Instead of represnting the content with gateblocks, put content in panels and place gateblocks in between -->
+                  <div class="panel panel-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                      {{ sec.1.pageblock.label }} 
+                    </div>
+                  </div>
                   <div class="gate-button unlocked {{sec.6.0|convert}}" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}">
                     <div class="btn-group-vertical" role="group" aria-label="..."  style="width: 100%;">                        
                       <div type="submit" class="btn-sm btn-success text-center status-{{sec.4}}" style="margin-top: 5px;">
@@ -61,7 +68,7 @@
                 {% endif %}
             {% else %}
               {% if sec.5 %}
-                <button type="button" class="btn btn-danger dropdown-toggle" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}" aria-expanded="false">
+                <button type="button" class="btn btn-danger" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}" aria-expanded="false">
                   Locked Gate 
                   <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                   <form action ="." method="post">{% csrf_token %}
