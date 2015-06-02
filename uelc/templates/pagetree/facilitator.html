@@ -27,7 +27,7 @@
       <!-- user (u.0), gateblocks (u.1) --> 
       <div class="gate-section">
         <h3 class="facilitator-usrnm">Group {{u.0}}<br /><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></h3>
-        <div class="gate-section-list">
+        <div class="well"> <!-- class="gate-section-list"> -->
         {% for sec in u.1 %}
           <div class="group-btn-list" data-section-id="{{sec.0.pk}}" data-group-id="{{u.0.id}}">
             {% comment %}
