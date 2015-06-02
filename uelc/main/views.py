@@ -191,6 +191,7 @@ class UELCPageView(LoggedInMixin,
                 sectionPk=self.section.pk,
                 notification=notification)
         elif(notification == 'At Gate Block'):
+            print "At a Gate Block, no decision submission"
             msg = dict(
                 userId=user.id,
                 path=path,
