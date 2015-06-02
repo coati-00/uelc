@@ -156,6 +156,7 @@ class UELCPageView(LoggedInMixin,
         return library_items
 
     def notify_facilitators(self, request, path, notification):
+        print "Notify Facilitators"
         user = get_object_or_404(User, pk=request.user.pk)
         socket = zmq_context.socket(zmq.REQ)
         socket.connect(settings.WINDSOCK_BROKER_URL)
@@ -408,6 +409,7 @@ class FacilitatorView(LoggedInFacilitatorMixin,
         socket.recv()
 
     def post_curveball_select(self, request):
+        print "Inside select curveball"
         '''Show the facilitator their choices for the curveball,
         facilitator selects what curveball the group will see'''
         user = User.objects.get(id=request.POST.get('user_id'))
