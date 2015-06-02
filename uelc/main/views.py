@@ -165,6 +165,8 @@ class UELCPageView(LoggedInMixin,
         msg = dict()
         if(notification == 'Decision Submitted'):
             cb = self.section.get_next()
+            print "The next section is"
+            print cb
             try:
                 if (cb.display_name == "Curveball Block"):
                     print "at curveball"
