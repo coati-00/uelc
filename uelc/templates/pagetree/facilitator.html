@@ -71,17 +71,25 @@
                   </form>
                 </button>
                 </div>
+                
                 <div><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
+                
+                  <div class="panel panel-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                      <span style="color:#D00000"> {{ sec.1.pageblock.label }} </span> <span style="color:#D00000"> This is locked block</span>
+                    </div>
+                  </div>
                 {% endif %}
             {% else %} <!-- Other blocks should be locked sections -->
-              {% comment %}{% if sec.5 %}{% endcomment %}
+              
                  <div class="panel panel-primary">
                     <div class="panel-heading"></div>
                     <div class="panel-body">
                       <span color="#D00000"> {{ sec.1.pageblock.label }} </span> <span color="#D00000"> This is locked block</span>
                     </div>
                   </div>
-              {% comment %}{% endif %}{% endcomment %}
+              
             {% endif %}
             </div>
         {% endfor %}
