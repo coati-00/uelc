@@ -2,25 +2,26 @@ $(function() {
 
 	$('button.curveball-btn').on('click', function () {
 		console.log("group has clicked on a curveball button");
+		//console.log();
 		console.log("jQuery(this).data()");
 		console.log(jQuery(this).data());
-		console.log("jQuery(this).data().pageblock-id");
-		console.log(jQuery(this).data().pageblock-id);
-		console.log("jQuery(this).data().group-id");
-		console.log(jQuery(this).data().group-id);
-	    
-		$.ajax({
-	        url: "/curveball_read/",
-	        type: "POST",
-	        dateType: 'json',
-	        //data: {'scenario' : good_s, 'conversation' : good_c },
-	        error: function(evt) {
-	              //setTimeout(updateToken, currentRefresh);
-	        },
-	        success: function(d) {
-	                //window.token = d.token;
-	        }
-	    });
+//		console.log("jQuery(this).data().pageblock-id");
+//		console.log(jQuery(this).data().pageblock-id);
+//		console.log("jQuery(this).data().group-id");
+//		console.log(jQuery(this).data().group-id);
+//	    
+//		$.ajax({
+//	        url: "/curveball_read/",
+//	        type: "POST",
+//	        dateType: 'json',
+//	        //data: {'scenario' : good_s, 'conversation' : good_c },
+//	        error: function(evt) {
+//	              //setTimeout(updateToken, currentRefresh);
+//	        },
+//	        success: function(d) {
+//	                //window.token = d.token;
+//	        }
+//	    });
 
 	});
 	
