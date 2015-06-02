@@ -1,10 +1,13 @@
 $(function() {
 
 	$('button.curveball-btn').on('click', function () {
-		console.log("group has clicked on a curveball button");
+		//console.log("group has clicked on a curveball button");
+		alert("group has clicked on a curveball button");
 		//console.log();
-		console.log("jQuery(this).data()");
-		console.log(jQuery(this).data());
+		//console.log("jQuery(this).data()");
+		alert("jQuery(this).data()");
+		//console.log(jQuery(this).data());
+		alert(jQuery(this).data());
 //		console.log("jQuery(this).data().pageblock-id");
 //		console.log(jQuery(this).data().pageblock-id);
 //		console.log("jQuery(this).data().group-id");
