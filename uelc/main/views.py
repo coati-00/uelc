@@ -342,8 +342,8 @@ class UELCPageView(LoggedInMixin,
                            extra_tags='quizSubmissionError')
             return HttpResponseRedirect(request.path)
 
-
-class CurveballReadView(LoggedInMixin, JSONResponseMixin, View):
+# LoggedInMixin,
+class CurveballReadView(JSONResponseMixin, View):
                        
     def post(self, *args, **kwargs):
         '''Is there some way o pass this to the PageViews notify facilitator
