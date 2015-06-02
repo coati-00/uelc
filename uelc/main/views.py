@@ -21,7 +21,7 @@ from uelc.main.helper_functions import (
 from uelc.mixins import (
     LoggedInMixin, LoggedInFacilitatorMixin,
     SectionMixin, LoggedInMixinAdmin, DynamicHierarchyMixin,
-    RestrictedModuleMixin)
+    RestrictedModuleMixin, JSONResponseMixin)
 from uelc.main.models import (
     Cohort, UserProfile, Case,
     CaseAnswer, UELCHandler,
