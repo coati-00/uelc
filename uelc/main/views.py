@@ -191,7 +191,7 @@ class UELCPageView(LoggedInMixin,
                 sectionPk=self.section.pk,
                 notification=notification)
         elif(notification == 'At Gate Block'):
-            print "At a Gate Block, no decision submission"
+            print "At a Gate Block"
             msg = dict(
                 userId=user.id,
                 path=path,
@@ -255,6 +255,8 @@ class UELCPageView(LoggedInMixin,
                                             completed=completed))
             if display_name == 'Gate Block' and grp_usr:
                     self.notify_facilitators(request, path, 'At Gate Block')
+            if display_name == 'Curveball Block' and grp_usr:
+                    self.notify_facilitators(request, path, 'At Curveball Block')
         # if gateblock is not unlocked then return to last known page
         # section.gate_check(user), doing this because hierarchy cannot
         # be "gated" because we will be skipping around depending on
