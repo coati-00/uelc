@@ -57,9 +57,13 @@
                   <div><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
                   
                   {% if sec.1 %}
+                    <div>
                       <button type="button" class="btn btn-success" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}" aria-expanded="false">
                       Unlocked Gate 
                       </button>
+                      </div>
+                      <div><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
+                      
                   {% endif %}
                 {% endif %}
             {% else %} <!-- If block is a gateblock and user can see it show gateblock label for the content and put lock-->
