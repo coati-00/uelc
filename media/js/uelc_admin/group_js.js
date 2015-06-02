@@ -8,6 +8,12 @@ $(function() {
 		alert("jQuery(this).data()");
 		//console.log(jQuery(this).data());
 		alert(jQuery(this).data());
+		alert("jQuery(this).data().pageblock-id");
+		//console.log(jQuery(this).data());
+		alert(jQuery(this).data().pageblock-id);
+		alert("jQuery(this).data().group");
+		//console.log(jQuery(this).data());
+		alert(jQuery(this).data().group);
 //		console.log("jQuery(this).data().pageblock-id");
 //		console.log(jQuery(this).data().pageblock-id);
 //		console.log("jQuery(this).data().group-id");
