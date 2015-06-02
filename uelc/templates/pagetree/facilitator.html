@@ -38,7 +38,7 @@
             -->
             {% endcomment %}
 
-            {% if sec.2 %}
+            {% if sec.2 %}<!-- If block is unlocked -->
               {% comment %}
                 <!-- We are currently using gateblock labels to represent the pageblock before it -->
                 <!-- We need to somehow get the actual content for the curveball
@@ -49,7 +49,7 @@
                   <div class="panel panel-primary">
                     <div class="panel-heading"></div>
                     <div class="panel-body">
-                      {{ sec.1.pageblock.label }} 
+                      <span> {{ sec.1.pageblock.label }} </span> <span> This is unlocked block</span>
                     </div>
                   </div>
                   <div class="gate-button unlocked {{sec.6.0|convert}}" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}">
@@ -59,14 +59,11 @@
                         <br />
                         <span class="badge badge-{{sec.4}} text-capitalize">{{sec.4}}</span>
                       </div>
-                      <button class="btn btn-xs btn-default btn-block text-center">
-                        <a class="preview-link" data-user="{{u.0.id}}" target="_blank" href="{{ sec.1.pageblock.section.get_absolute_url }}">Preview</a>
-                      </button>
                    </div>
                    <div class="clearfix visible-lg-block"></div>
                   </div>
                 {% endif %}
-            {% else %}
+            {% elif sec.1 %} <!-- If block is a gateblock and user can see it -->
               {% if sec.5 %}
                 <button type="button" class="btn btn-danger" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}" aria-expanded="false">
                   Locked Gate 
@@ -81,6 +78,15 @@
                   </form>
                 </button>
                 {% endif %}
+            {% else %} <!-- Other blocks should be locked sections -->
+              {% if sec.5 %}
+                 <div class="panel panel-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                      <span> {{ sec.1.pageblock.label }} </span> <span> This is locked block</span>
+                    </div>
+                  </div>
+              {% endif %}
             {% endif %}
             </div>
         {% endfor %}
