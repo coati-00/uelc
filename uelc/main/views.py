@@ -343,6 +343,22 @@ class UELCPageView(LoggedInMixin,
             return HttpResponseRedirect(request.path)
 
 
+class CurveballReadView(LoggedInMixin, JSONResponseMixin, View):
+                       
+    def post(self, *args, **kwargs):
+        '''Is there some way o pass this to the PageViews notify facilitator
+        by making it as class method? setting up another websocket connection
+        seems like a significant amout of work just to say
+        "hey to students read the content" '''
+        print request.POST
+        group = kwargs.pop('group', None)
+        block = kwargs.pop('pageblock', None)
+        path = request.path
+        return self.render_to_json_response({'group': group,
+                                               'block': block,
+                                               'path': path})
+
+
 class UELCEditView(LoggedInFacilitatorMixin,
                    DynamicHierarchyMixin,
                    EditView):

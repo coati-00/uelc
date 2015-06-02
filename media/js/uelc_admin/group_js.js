@@ -2,35 +2,37 @@ $(function() {
 
 	$('button.curveball-btn').on('click', function () {
 		//console.log("group has clicked on a curveball button");
-		alert("group has clicked on a curveball button");
+		//alert("group has clicked on a curveball button");
 		//console.log();
 		//console.log("jQuery(this).data()");
-		alert("jQuery(this).data()");
+		//alert("jQuery(this).data()");
 		//console.log(jQuery(this).data());
-		alert(jQuery(this).data());
-		alert("jQuery(this).data().pageblock");
+		//alert(jQuery(this).data());
+		//alert("jQuery(this).data().pageblock");
 		//console.log(jQuery(this).data());
-		alert(jQuery(this).data().pageblock);
-		alert("jQuery(this).data().group");
+		//alert(jQuery(this).data().pageblock);
+		//alert("jQuery(this).data().group");
 		//console.log(jQuery(this).data());
-		alert(jQuery(this).data().group);
+		//alert(jQuery(this).data().group);
 //		console.log("jQuery(this).data().pageblock-id");
 //		console.log(jQuery(this).data().pageblock-id);
 //		console.log("jQuery(this).data().group-id");
 //		console.log(jQuery(this).data().group-id);
 //	    
-//		$.ajax({
-//	        url: "/curveball_read/",
-//	        type: "POST",
-//	        dateType: 'json',
-//	        //data: {'scenario' : good_s, 'conversation' : good_c },
-//	        error: function(evt) {
-//	              //setTimeout(updateToken, currentRefresh);
-//	        },
-//	        success: function(d) {
-//	                //window.token = d.token;
-//	        }
-//	    });
+		//var group = 
+		
+		$.ajax({
+	        url: "/curveball_read/",
+	        type: "POST",
+	        dateType: 'json',
+	        data: {'pageblock' : jQuery(this).data().pageblock, 'group' : jQuery(this).data().group },
+	        error: function(evt) {
+	              //setTimeout(updateToken, currentRefresh);
+	        },
+	        success: function(d) {
+	                //window.token = d.token;
+	        }
+	    });
 
 	});
 	

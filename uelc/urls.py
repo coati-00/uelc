@@ -13,7 +13,7 @@ from uelc.main.views import (
     UELCAdminEditUserView, UELCAdminCreateUserView, UELCAdminEditUserPassView,
     UELCAdminEditCaseView, UELCAdminCreateCohortView, UELCAdminEditCohortView,
     UELCAdminDeleteCohortView, UELCAdminDeleteCaseView,
-    UELCAdminCreateCaseView, UELCAdminDeleteUserView,
+    UELCAdminCreateCaseView, UELCAdminDeleteUserView, CurveballReadView,
     AddCaseAnswerToQuestionView, EditCaseAnswerView, DeleteCaseAnswerView)
 import os.path
 admin.autodiscover()
@@ -75,6 +75,7 @@ urlpatterns = patterns(
     (r'^$', views.IndexView.as_view()),
     (r'^ckeditor/', include('ckeditor.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^curveball_read/', CurveballReadView.as_view()),
     (r'^uelcadmin/case/', UELCAdminCaseView.as_view()),
     (r'^uelcadmin/createhierarchy/', UELCAdminCreateHierarchyView.as_view()),
     (r'^uelcadmin/cohort/', UELCAdminCohortView.as_view()),
