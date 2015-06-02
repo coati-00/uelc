@@ -183,6 +183,11 @@ class UELCPageView(LoggedInMixin,
                         cb_two_explanation=cb.curveball_two.explanation,
                         cb_three_title=cb.curveball_three.title,
                         cb_three_explanation=cb.curveball_three.explanation)
+                    e = dict(address="%s.pages/%s/facilitator/" %
+                             (settings.ZMQ_APPNAME, self.section.hierarchy.name),
+                            content=json.dumps(msg))
+                    socket.send(json.dumps(e))
+                    socket.recv()
             except:
                 pass
             msg = dict(
