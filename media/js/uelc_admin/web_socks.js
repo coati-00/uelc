@@ -55,10 +55,15 @@ $(function() {
         var groupColumn = '[data-group-id="' + String(groupId) + '"]';
         var sectionRow = '[data-section-id="' + String(sectionId) + '"]';
 
-        var getTheBtn = jQuery(groupColumn + sectionRow);
+        // this should be current location of the user
+        var getTheBtn = jQuery(groupColumn + sectionRow); 
 
         var gateBtn = getTheBtn.find('.gate-button');
 
+        /*
+         * Show location of user
+         * 
+         * */
         if (gateBtn.hasClass('locked')) { //console.log("This button is locked");
             gateBtn.removeClass('locked').addClass('unlocked');
             gateBtn.find('.btn-group-vertical > button.btn-sm')
@@ -67,6 +72,18 @@ $(function() {
             //need to remove input elements... maybe move form tag and remove that
         }
         //need to change button to success when user clicks to unlock the gate
+        
+        /*
+         * If user submits decision show the decision made
+         * 
+         * */
+        
+        
+        /*
+         * If the next block is a curveball show the form for the facilitator to select/submit the curveball for the group
+         * 
+         * */
+        
     };
 
     if (window.WebSocket) {
