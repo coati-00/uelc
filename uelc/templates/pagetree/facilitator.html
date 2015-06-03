@@ -70,6 +70,7 @@
               {% if sec.5 %}
               <div>
                 <button type="button" class="btn btn-danger" data-part-dec-raw="{{sec.6.1}}" data-part-decision="{{sec.6.1|convert_part2}}" aria-expanded="false">
+                  <span style="font:bold"></span>{{ sec.1.pageblock.label }}</span>
                   Locked Gate 
                   <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
                   <form action ="." method="post">{% csrf_token %}
@@ -86,9 +87,9 @@
                 <div><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></div>
                 
                   <div class="panel panel-primary">
-                    <div class="panel-heading"></div>
+                    <div class="panel-heading">{{ sec.1.pageblock.label }}</div>
                     <div class="panel-body">
-                      <span style="color:#D00000"> {{ sec.1.pageblock.label }} </span> <span style="color:#D00000"> This is locked block</span>
+                      <span style="color:#D00000"> To Be Reviewed</span>
                     </div>
                   </div>
                 {% endif %}
